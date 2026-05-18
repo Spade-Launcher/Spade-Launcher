@@ -33,7 +33,6 @@ body {
     object-fit: contain;
 }
 
-
 .subtitle {
     margin-top: 4px;
     color: #9a9a9a;
@@ -51,9 +50,14 @@ h2 {
     margin-top: 0;
 }
 
+p {
+    margin-bottom: 16px;
+}
+
 a {
     color: #8cb4ff;
     text-decoration: none;
+    transition: opacity .2s ease;
 }
 
 a:hover {
@@ -64,4 +68,13 @@ a:hover {
     margin-top: 50px;
     opacity: .6;
     font-size: 14px;
+}
+
+ul {
+    padding-left: 22px;
+    line-height: 1.8;
+}
+
+li {
+    margin-bottom: 10px;
 }
