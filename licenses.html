@@ -52,6 +52,21 @@
       padding: 36px;
     }
 
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 28px;
+      color: #9ca3af;
+      font-size: 15px;
+      text-decoration: none;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .back-button:hover {
+      color: #ffffff;
+      transform: translateX(-2px);
+    }
+
     .notice-box {
       border: 1px solid rgba(255, 255, 255, 0.08);
       background: rgba(255, 255, 255, 0.025);
@@ -68,6 +83,10 @@
       color: #ffffff;
       text-decoration: underline;
       text-underline-offset: 3px;
+    }
+
+    .back-button {
+      text-decoration: none;
     }
 
     @media (max-width: 600px) {
@@ -93,6 +112,8 @@
 
 <body>
   <main class="container">
+    <a class="back-button" href="index.html">← Back</a>
+
     <h1>Licenses</h1>
 
     <section class="notice-box">
