@@ -47,10 +47,29 @@
       padding: 36px;
     }
 
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 28px;
+      color: #9ca3af;
+      font-size: 15px;
+      text-decoration: none;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .back-button:hover {
+      color: #ffffff;
+      transform: translateX(-2px);
+    }
+
     a {
       color: #ffffff;
       text-decoration: underline;
       text-underline-offset: 3px;
+    }
+
+    .back-button {
+      text-decoration: none;
     }
 
     @media (max-width: 600px) {
@@ -76,6 +95,8 @@
 
 <body>
   <main class="container">
+    <a class="back-button" href="index.html">← Back</a>
+
     <h1>Terms of Service</h1>
     <p class="effective-date">Effective Date: 26.05.2026</p>
 
