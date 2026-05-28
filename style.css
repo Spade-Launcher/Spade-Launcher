@@ -78,3 +78,109 @@ ul {
 li {
     margin-bottom: 10px;
 }
+
+.preview-card {
+    margin-top: 28px;
+    background: #101111;
+    border-radius: 18px;
+    padding: 28px;
+}
+
+.preview-header {
+    margin-bottom: 24px;
+}
+
+.eyebrow {
+    margin: 0 0 8px;
+    color: #8f8f8f;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.preview-card h2 {
+    margin: 0;
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.section-subtitle {
+    margin-top: 10px;
+    color: #b8b8b8;
+    line-height: 1.6;
+}
+
+.screenshot-grid {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    padding: 8px 2px 18px;
+    scroll-snap-type: x mandatory;
+}
+
+.screenshot-grid img {
+    width: 210px;
+    flex: 0 0 auto;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    scroll-snap-align: start;
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 24px;
+    }
+
+    .hero {
+        gap: 18px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .logo {
+        width: 76px;
+        height: 76px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+    .preview-card {
+        padding: 22px;
+    }
+
+    .preview-card h2 {
+        font-size: 24px;
+    }
+
+    .screenshot-grid img {
+        width: 185px;
+        border-radius: 24px;
+    }
+}
+
+.screenshot-grid {
+    scrollbar-width: thin;
+    scrollbar-color: #333 transparent;
+}
+
+.screenshot-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.screenshot-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.screenshot-grid::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 999px;
+}
