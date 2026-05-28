@@ -112,14 +112,14 @@ li {
 
 .screenshot-grid {
     display: flex;
-    gap: 18px;
+    gap: 2px;
     overflow-x: auto;
     padding: 8px 2px 18px;
     scroll-snap-type: x mandatory;
 }
 
 .screenshot-grid img {
-    width: 210px;
+    width: 200px;
     flex: 0 0 auto;
     border-radius: 28px;
     border: 1px solid rgba(255, 255, 255, 0.08);
