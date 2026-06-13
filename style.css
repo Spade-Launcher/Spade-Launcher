@@ -38,20 +38,29 @@
     font-display: swap;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background: #0b0b0b;
+}
+
 body {
     background-color: #0b0b0b;
     color: white;
     font-family: "Inter", sans-serif;
-    max-width: 900px;
-    margin: auto;
-    padding: 40px;
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 48px 56px;
     line-height: 1.7;
 }
 
 .hero {
     display: flex;
     align-items: flex-start;
-    gap: 28px;
+    gap: 32px;
+    margin-bottom: 42px;
 }
 
 .hero .text-content {
@@ -62,28 +71,35 @@ body {
 .hero h1 {
     margin-top: 10px;
     margin-bottom: 0;
-    font-size: 52px;
+    font-size: clamp(44px, 5vw, 68px);
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
 }
 
 .logo {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     object-fit: contain;
 }
 
 .subtitle {
-    margin-top: 4px;
-    color: #9a9a9a;
-    font-size: 18px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    color: #a5a5a5;
+    font-size: 20px;
+    line-height: 1.45;
 }
 
 .card {
     background: #111111;
-    padding: 24px;
-    border-radius: 20px;
-    margin-top: 24px;
+    padding: 30px 34px;
+    border-radius: 22px;
+    margin-top: 28px;
+}
+
+.card p:last-child {
+    margin-bottom: 0;
 }
 
 h2 {
@@ -105,7 +121,7 @@ a:hover {
 }
 
 .footer {
-    margin-top: 50px;
+    margin-top: 56px;
     opacity: .6;
     font-size: 14px;
 }
@@ -120,14 +136,15 @@ li {
 }
 
 .preview-card {
-    margin-top: 28px;
+    margin-top: 32px;
     background: #101111;
-    border-radius: 18px;
-    padding: 28px;
+    border-radius: 24px;
+    padding: 34px;
+    overflow: hidden;
 }
 
 .preview-header {
-    margin-bottom: 24px;
+    margin-bottom: 28px;
 }
 
 .eyebrow {
@@ -140,76 +157,36 @@ li {
 
 .preview-card h2 {
     margin: 0;
-    font-size: 28px;
-    line-height: 1.2;
+    font-size: clamp(30px, 3vw, 40px);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
 }
 
 .section-subtitle {
-    margin-top: 10px;
+    margin-top: 12px;
+    margin-bottom: 0;
     color: #b8b8b8;
     line-height: 1.6;
+    font-size: 17px;
 }
 
 .screenshot-grid {
     display: flex;
-    gap: 2px;
+    gap: 14px;
     overflow-x: auto;
-    padding: 8px 2px 18px;
+    padding: 8px 2px 20px;
     scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: #333 transparent;
 }
 
 .screenshot-grid img {
-    width: 200px;
+    width: 245px;
     flex: 0 0 auto;
     border-radius: 28px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
     scroll-snap-align: start;
-}
-
-@media (max-width: 700px) {
-    body {
-        padding: 24px;
-    }
-
-    .hero {
-        gap: 18px;
-    }
-
-    .hero h1 {
-        font-size: 38px;
-    }
-
-    .logo {
-        width: 76px;
-        height: 76px;
-    }
-
-    .subtitle {
-        font-size: 16px;
-    }
-
-    .card {
-        padding: 22px;
-    }
-
-    .preview-card {
-        padding: 22px;
-    }
-
-    .preview-card h2 {
-        font-size: 24px;
-    }
-
-    .screenshot-grid img {
-        width: 185px;
-        border-radius: 24px;
-    }
-}
-
-.screenshot-grid {
-    scrollbar-width: thin;
-    scrollbar-color: #333 transparent;
 }
 
 .screenshot-grid::-webkit-scrollbar {
@@ -223,4 +200,93 @@ li {
 .screenshot-grid::-webkit-scrollbar-thumb {
     background: #333;
     border-radius: 999px;
+}
+
+@media (max-width: 900px) {
+    body {
+        padding: 38px 32px;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+    }
+
+    .screenshot-grid img {
+        width: 220px;
+    }
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 24px;
+    }
+
+    .hero {
+        gap: 18px;
+        margin-bottom: 32px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+        letter-spacing: -0.03em;
+    }
+
+    .logo {
+        width: 76px;
+        height: 76px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .card {
+        padding: 22px;
+        border-radius: 20px;
+    }
+
+    .preview-card {
+        padding: 22px;
+        border-radius: 20px;
+    }
+
+    .preview-card h2 {
+        font-size: 24px;
+    }
+
+    .section-subtitle {
+        font-size: 15px;
+    }
+
+    .screenshot-grid {
+        gap: 10px;
+    }
+
+    .screenshot-grid img {
+        width: 185px;
+        border-radius: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 22px 18px;
+    }
+
+    .hero {
+        align-items: flex-start;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .logo {
+        width: 68px;
+        height: 68px;
+    }
+
+    .screenshot-grid img {
+        width: 170px;
+    }
 }
