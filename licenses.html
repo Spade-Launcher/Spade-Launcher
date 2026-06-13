@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Licenses | Spade Launcher</title>
 
-  <link rel="icon" href="spade-logo.png" type="image/png">
+  <link rel="icon" href="spade-logo.png" type="image/png" />
 
   <style>
     @font-face {
@@ -48,11 +48,22 @@
       font-display: swap;
     }
 
+    :root {
+      color-scheme: dark;
+      --background: #0b0b0b;
+      --surface: rgba(255, 255, 255, 0.035);
+      --surface-strong: rgba(255, 255, 255, 0.055);
+      --border: rgba(255, 255, 255, 0.09);
+      --text: #f5f5f5;
+      --secondary: #d6d6d6;
+      --muted: #9ca3af;
+    }
+
     body {
-      background-color: #0b0b0b;
-      color: #f5f5f5;
+      background: var(--background);
+      color: var(--text);
       font-family: "Inter", Arial, sans-serif;
-      max-width: 820px;
+      max-width: 860px;
       margin: 0 auto;
       padding: 48px 24px;
       line-height: 1.7;
@@ -61,35 +72,43 @@
     h1 {
       font-size: 42px;
       line-height: 1.15;
-      margin-bottom: 8px;
-      color: #ffffff;
+      margin: 0 0 8px;
     }
 
     h2 {
       font-size: 24px;
-      margin-top: 40px;
-      margin-bottom: 12px;
-      color: #ffffff;
+      margin: 40px 0 12px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin: 24px 0 8px;
     }
 
     p {
       margin: 0 0 16px;
-      color: #d6d6d6;
+      color: var(--secondary);
     }
 
     ul {
       margin: 0 0 20px 22px;
       padding: 0;
-      color: #d6d6d6;
+      color: var(--secondary);
     }
 
     li {
       margin-bottom: 8px;
     }
 
+    a {
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     .container {
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      background: var(--surface);
       border-radius: 24px;
       padding: 36px;
     }
@@ -98,7 +117,7 @@
       display: inline-flex;
       align-items: center;
       margin-bottom: 28px;
-      color: #9ca3af;
+      color: var(--muted);
       font-size: 15px;
       text-decoration: none;
       transition: color 0.2s ease, transform 0.2s ease;
@@ -110,21 +129,19 @@
     }
 
     .notice-box {
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border);
+      background: var(--surface-strong);
       border-radius: 18px;
       padding: 22px;
       margin: 24px 0;
     }
 
     .muted {
-      color: #9ca3af;
+      color: var(--muted);
     }
 
-    a {
-      color: #ffffff;
-      text-decoration: underline;
-      text-underline-offset: 3px;
+    .small {
+      font-size: 14px;
     }
 
     @media (max-width: 600px) {
@@ -150,98 +167,126 @@
 
 <body>
   <main class="container">
-    <a class="back-button" href="index.html">← Back</a>
+    <a class="back-button" href="index.html">&larr; Back</a>
 
     <h1>Licenses</h1>
+    <p class="muted small">Last updated: 13 June 2026</p>
 
     <section class="notice-box">
       <h2>Spade Launcher</h2>
-      <p class="muted">© 2026 Nikitas Amvrosov</p>
-
+      <p class="muted">&copy; 2026 Spade Labs / Nikitas Amvrosov. All rights reserved.</p>
       <p>
-        All rights reserved.
-      </p>
-
-      <p>
-        Spade Launcher is proprietary software.
+        Spade Launcher is proprietary software. The Spade Launcher name, app icon,
+        logo, launcher-specific design, custom UI, Ace widgets, and original assets
+        are owned by Spade Labs / Nikitas Amvrosov unless otherwise noted below.
       </p>
     </section>
 
     <h2>Third-party Components</h2>
     <p>
-      Spade Launcher uses open-source and third-party components, including:
+      Spade Launcher uses open-source and third-party components. These components
+      remain subject to their own licenses.
     </p>
 
+    <h3>Android and Kotlin libraries</h3>
     <ul>
-      <li>AndroidX libraries — Apache License 2.0</li>
-      <li>Jetpack Compose — Apache License 2.0</li>
-      <li>Kotlin — Apache License 2.0</li>
-      <li>Ktor — Apache License 2.0</li>
-      <li>Kotlinx Serialization — Apache License 2.0</li>
-      <li>AndroidX DataStore — Apache License 2.0</li>
+      <li>AndroidX Core KTX &mdash; Apache License 2.0</li>
+      <li>AndroidX Lifecycle Runtime KTX &mdash; Apache License 2.0</li>
+      <li>AndroidX Activity Compose &mdash; Apache License 2.0</li>
+      <li>Jetpack Compose UI, UI Graphics, Tooling, and Material 3 &mdash; Apache License 2.0</li>
+      <li>AndroidX DataStore Preferences &mdash; Apache License 2.0</li>
+      <li>Kotlin and Kotlin Compose compiler plugin &mdash; Apache License 2.0</li>
+      <li>Kotlinx Serialization &mdash; Apache License 2.0</li>
+      <li>Ktor Client &mdash; Apache License 2.0</li>
     </ul>
 
-    <h2>Weather Data</h2>
+    <h3>Weather data</h3>
     <p>
-      Weather data is provided by Open-Meteo.
+      Weather forecasts and city search/geocoding are provided by
+      <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>.
     </p>
-
-    <p>
-      Open-Meteo API data is licensed under Creative Commons Attribution 4.0 International
-      <span class="muted">(CC BY 4.0)</span>.
-    </p>
-
     <p>
       Weather data by
-      <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">
-        Open-Meteo.com
+      <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo.com</a>.
+      Open-Meteo data is made available under the
+      <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
+        Creative Commons Attribution 4.0 International License
       </a>
+      and is subject to Open-Meteo's own terms.
     </p>
 
-    <h2>Fonts</h2>
+    <h3>Fonts used in the Android app</h3>
+    <ul>
+      <li>Bebas Neue &mdash; Copyright &copy; 2010 Dharma Type &mdash; SIL Open Font License 1.1</li>
+      <li>Poiret One &mdash; The Poiret One Project Authors &mdash; SIL Open Font License 1.1</li>
+      <li>Prata &mdash; The Prata Project Authors &mdash; SIL Open Font License 1.1</li>
+      <li>Share Tech Mono &mdash; SIL Open Font License 1.1</li>
+    </ul>
+
+    <h3>Font used on this website</h3>
     <p>
-      This website uses the Inter font family. The font files are self-hosted and served from this website.
+      This website uses the Inter font family. The font files are self-hosted and
+      served from this website. Inter is licensed under the SIL Open Font License 1.1.
     </p>
 
+    <h3>Icons</h3>
     <p>
-      Inter is licensed under the SIL Open Font License 1.1.
+      Spade Launcher's minimal app/category/weather icon set is based on icons from
+      <a href="https://lucide.dev/" target="_blank" rel="noopener noreferrer">Lucide</a>.
+      Lucide is released under the ISC License. Some Lucide icons are derived from
+      Feather icons and include MIT License notices from the Feather project.
     </p>
 
-    <p>
-      Copyright © The Inter Project Authors.
-    </p>
+    <h2>License Links</h2>
+    <ul>
+      <li>
+        Apache License 2.0:
+        <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">
+          https://www.apache.org/licenses/LICENSE-2.0
+        </a>
+      </li>
+      <li>
+        Creative Commons Attribution 4.0:
+        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
+          https://creativecommons.org/licenses/by/4.0/
+        </a>
+      </li>
+      <li>
+        SIL Open Font License 1.1:
+        <a href="https://openfontlicense.org/open-font-license-official-text/" target="_blank" rel="noopener noreferrer">
+          https://openfontlicense.org/open-font-license-official-text/
+        </a>
+      </li>
+      <li>
+        Lucide License:
+        <a href="https://lucide.dev/license" target="_blank" rel="noopener noreferrer">
+          https://lucide.dev/license
+        </a>
+      </li>
+      <li>
+        MIT License:
+        <a href="https://opensource.org/license/mit" target="_blank" rel="noopener noreferrer">
+          https://opensource.org/license/mit
+        </a>
+      </li>
+      <li>
+        Open-Meteo Terms:
+        <a href="https://open-meteo.com/en/terms" target="_blank" rel="noopener noreferrer">
+          https://open-meteo.com/en/terms
+        </a>
+      </li>
+    </ul>
 
     <h2>Additional Notices</h2>
     <p>
-      Open-source libraries used by Spade Launcher remain subject to their respective licenses.
+      Full license texts for bundled font and icon notices may also be included
+      inside the app package. If any third-party notice is missing or inaccurate,
+      please contact the developer so it can be corrected.
     </p>
 
     <p>
-      Apache License 2.0:
-      <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">
-        https://www.apache.org/licenses/LICENSE-2.0
-      </a>
-    </p>
-
-    <p>
-      Creative Commons Attribution 4.0:
-      <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
-        https://creativecommons.org/licenses/by/4.0/
-      </a>
-    </p>
-
-    <p>
-      SIL Open Font License 1.1:
-      <a href="https://openfontlicense.org/" target="_blank" rel="noopener noreferrer">
-        https://openfontlicense.org/
-      </a>
-    </p>
-
-    <p>
-      Open-Meteo:
-      <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">
-        https://open-meteo.com/
-      </a>
+      Contact:
+      <a href="mailto:support@spadelauncher.com">support@spadelauncher.com</a>
     </p>
   </main>
 </body>
