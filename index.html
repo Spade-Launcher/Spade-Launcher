@@ -1,81 +1,258 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spade Launcher</title>
+
+    <title>Spade Launcher — Less Noise. More Presence.</title>
+    <meta name="description" content="Spade Launcher is a minimalist Android launcher designed for simplicity, privacy, and intentional phone use.">
+    <meta name="theme-color" content="#0b0b0b">
 
     <link rel="icon" href="/spade-logo.png" type="image/png">
     <link rel="shortcut icon" href="/spade-logo.png" type="image/png">
     <link rel="apple-touch-icon" href="/spade-logo.png">
 
-    <meta name="theme-color" content="#0b0b0b">
-
     <meta property="og:title" content="Spade Launcher">
-    <meta property="og:description" content="Less Noise. More Presence. Minimal Android launcher focused on simplicity, privacy, and intentional phone use.">
+    <meta property="og:description" content="Less Noise. More Presence. A minimalist Android launcher built for intentional phone use.">
     <meta property="og:image" content="https://spadelauncher.com/spade-logo.png">
     <meta property="og:url" content="https://spadelauncher.com">
     <meta property="og:type" content="website">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-improved.css">
 </head>
 
 <body>
+    <nav class="site-nav" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="Spade Launcher home">
+            <img src="./spade-logo.png" alt="" class="brand-logo">
+            <span>Spade Launcher</span>
+        </a>
 
-<header class="hero">
-    <img src="./spade-logo.png" class="logo" alt="Spade logo">
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#ace">Ace Edition</a>
+            <a href="#about">About</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </nav>
 
-    <div class="text-content">
-        <h1>Welcome to Spade Launcher</h1>
+    <main id="top">
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Minimal Android launcher</p>
+                <h1>Less Noise.<br>More Presence.</h1>
+                <p class="hero-text">
+                    A calm, focused home screen that helps you use your phone with intention — without giving up speed, personality, or useful features.
+                </p>
 
-        <p class="subtitle">
-            Less Noise.<br>
-            More Presence.
-        </p>
-    </div>
-</header>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#preview">Explore Spade</a>
+                    <a class="button button-secondary" href="#ace">Discover Ace Edition</a>
+                </div>
 
-<div class="card">
-    <p>
-        Minimal Android launcher focused on simplicity, privacy, and intentional phone use.
-    </p>
-</div>
+                <div class="trust-row" aria-label="Product principles">
+                    <span>No ads</span>
+                    <span>No account</span>
+                    <span>No analytics</span>
+                </div>
+            </div>
 
-<section class="preview-card">
-    <div class="preview-header">
-        <p class="eyebrow">Preview</p>
-        <h2>Designed to keep your phone quiet.</h2>
-        <p class="section-subtitle">
-            A clean home screen, fast search, glanceable weather, and an OLED-friendly design.
-        </p>
-    </div>
+            <div class="hero-visual" aria-hidden="true">
+                <div class="phone phone-back">
+                    <img src="images/2SecondScreen.png" alt="">
+                </div>
+                <div class="phone phone-front">
+                    <img src="images/1FirstScreen.png" alt="">
+                </div>
+                <div class="hero-glow"></div>
+            </div>
+        </section>
 
-    <div class="screenshot-grid">
-        <img src="images/1FirstScreen.png" alt="Spade Launcher first screen">
-        <img src="images/2SecondScreen.png" alt="Spade Launcher second screen">
-        <img src="images/3InstantSearch.png" alt="Spade Launcher instant search">
-        <img src="images/4WeatherAtAGlance.png" alt="Spade Launcher weather at a glance">
-        <img src="images/5OLEDFriendly.png" alt="Spade Launcher OLED friendly theme">
-    </div>
-</section>
+        <section class="statement section-shell">
+            <p>
+                Your phone should help you do what you intended to do — not constantly compete for your attention.
+            </p>
+        </section>
 
-<div class="card">
-    <h2>Links</h2>
+        <section class="section" id="features">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Core experience</p>
+                    <h2>Minimal by design.<br>Useful by default.</h2>
+                </div>
+                <p class="section-intro">
+                    Spade keeps everyday actions fast and familiar while removing the visual clutter that makes a home screen feel noisy.
+                </p>
+            </div>
 
-    <p><a href="privacy.html">Privacy Policy</a></p>
-    <p><a href="terms.html">Terms & Disclaimer</a></p>
-    <p><a href="licenses.html">Licenses</a></p>
-    <a href="impressum.html">Impressum</a>
-</div>
+            <div class="feature-grid">
+                <article class="feature-card feature-large">
+                    <span class="feature-number">01</span>
+                    <h3>A quieter home screen</h3>
+                    <p>See the time, date, weather, battery, and the apps that matter most — nothing more unless you choose it.</p>
+                </article>
 
-<div class="card">
-    <h2>Contact</h2>
-    <p>support@spadelauncher.com</p>
-</div>
+                <article class="feature-card">
+                    <span class="feature-number">02</span>
+                    <h3>Instant app search</h3>
+                    <p>Swipe up and type. Find any app immediately without navigating through pages of icons.</p>
+                </article>
 
-<div class="footer">
-    © 2026 Spade Launcher
-</div>
+                <article class="feature-card">
+                    <span class="feature-number">03</span>
+                    <h3>Fast shortcuts</h3>
+                    <p>Launch your chosen app, open settings, and perform common actions with simple gestures.</p>
+                </article>
 
+                <article class="feature-card">
+                    <span class="feature-number">04</span>
+                    <h3>Private by design</h3>
+                    <p>No account, no advertising profile, and no analytics following how you use your phone.</p>
+                </article>
+
+                <article class="feature-card feature-large">
+                    <span class="feature-number">05</span>
+                    <h3>Built around your style</h3>
+                    <p>Choose a dark OLED-friendly look or a clean light theme, adjust alignment, hide apps, and shape the launcher around your habits.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section preview-section" id="preview">
+            <div class="section-heading compact-heading">
+                <div>
+                    <p class="eyebrow">Product preview</p>
+                    <h2>Designed to feel calm.</h2>
+                </div>
+                <p class="section-intro">A focused interface with just enough information, available exactly when you need it.</p>
+            </div>
+
+            <div class="screenshot-grid" aria-label="Spade Launcher screenshots">
+                <figure>
+                    <img src="images/1FirstScreen.png" alt="Spade Launcher home screen">
+                    <figcaption>Focused home</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/2SecondScreen.png" alt="Spade Launcher app drawer">
+                    <figcaption>Clean app drawer</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/3InstantSearch.png" alt="Spade Launcher instant app search">
+                    <figcaption>Instant search</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/4WeatherAtAGlance.png" alt="Weather forecast inside Spade Launcher">
+                    <figcaption>Weather at a glance</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/5OLEDFriendly.png" alt="Spade Launcher OLED friendly dark theme">
+                    <figcaption>OLED friendly</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="section ace-section" id="ace">
+            <div class="ace-copy">
+                <p class="eyebrow">Spade Launcher: Ace Edition</p>
+                <h2>More control.<br>Still minimal.</h2>
+                <p>
+                    Ace Edition expands Spade with deeper personalization and advanced features for people who want their launcher to feel truly their own.
+                </p>
+
+                <ul class="ace-list">
+                    <li>Premium widgets</li>
+                    <li>Extended customization</li>
+                    <li>More gestures and shortcuts</li>
+                    <li>Future Ace features included</li>
+                </ul>
+            </div>
+
+            <div class="ace-panel">
+                <div class="ace-mark">A</div>
+                <p class="ace-label">Ace Edition</p>
+                <p class="ace-note">The complete Spade experience for users who want more freedom without more clutter.</p>
+            </div>
+        </section>
+
+        <section class="section philosophy-section">
+            <p class="eyebrow">The idea behind Spade</p>
+            <blockquote>
+                “Minimalism should remove friction, not functionality.”
+            </blockquote>
+            <p>
+                Spade Launcher is not about turning your phone into an empty screen. It is about keeping what is useful, removing what is distracting, and making every interaction feel deliberate.
+            </p>
+        </section>
+
+        <section class="section about-section" id="about">
+            <div>
+                <p class="eyebrow">Independent project</p>
+                <h2>Built with intention.</h2>
+            </div>
+            <div class="about-copy">
+                <p>
+                    Spade Launcher is independently designed and developed by Nikitas Amvrosov with a focus on thoughtful interaction, privacy, and visual simplicity.
+                </p>
+                <p>
+                    Every feature is judged by one question: does it make the phone more useful without making it more distracting?
+                </p>
+            </div>
+        </section>
+
+        <section class="section faq-section" id="faq">
+            <div class="section-heading compact-heading">
+                <div>
+                    <p class="eyebrow">FAQ</p>
+                    <h2>Good to know.</h2>
+                </div>
+            </div>
+
+            <div class="faq-grid">
+                <details>
+                    <summary>Does Spade Launcher collect personal data?</summary>
+                    <p>Spade does not use advertising or analytics and stores launcher preferences locally on your device. Weather requests are handled through Open-Meteo.</p>
+                </details>
+
+                <details>
+                    <summary>Can I return to my old launcher?</summary>
+                    <p>Yes. You can switch your default home app at any time through Android settings.</p>
+                </details>
+
+                <details>
+                    <summary>What is Ace Edition?</summary>
+                    <p>Ace Edition is the premium version of Spade Launcher, offering additional customization, widgets, and advanced features.</p>
+                </details>
+
+                <details>
+                    <summary>Does Spade contain advertisements?</summary>
+                    <p>No. Spade Launcher does not include ads.</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="final-cta section-shell">
+            <img src="./spade-logo.png" alt="Spade Launcher logo">
+            <div>
+                <p class="eyebrow">Spade Launcher</p>
+                <h2>Make your phone feel quieter.</h2>
+            </div>
+            <a class="button button-primary" href="#top">Back to top</a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand">
+            <strong>Spade Launcher</strong>
+            <span>© 2026 Nikitas Amvrosov</span>
+        </div>
+
+        <div class="footer-links">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="licenses.html">Licenses</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="mailto:support@spadelauncher.com">Contact</a>
+        </div>
+    </footer>
 </body>
 </html>
