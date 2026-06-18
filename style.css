@@ -500,11 +500,23 @@ h3 {
 
 .ace-mark {
     margin-bottom: auto;
+    display: flex;
+    align-items: flex-end;
+    gap: 28px;
+    line-height: 0.78;
+    opacity: 0.94;
+}
+
+.ace-letter {
     font-size: clamp(150px, 20vw, 280px);
     font-weight: 600;
-    line-height: 0.78;
     letter-spacing: -0.1em;
-    opacity: 0.94;
+}
+
+.ace-spade {
+    font-size: clamp(170px, 23vw, 320px);
+    line-height: 0.72;
+    transform: translateY(8px);
 }
 
 .ace-label {
