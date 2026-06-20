@@ -139,12 +139,13 @@
 
     <h2>Weather Functionality</h2>
     <p>
-      When weather is used, Spade Launcher may send the following information to Open-Meteo:
+      When weather is used, Spade Launcher sends the following information to a self-hosted
+      weather server operated by the developer (weather.spadelauncher.com):
     </p>
 
     <ul>
-      <li>City search text</li>
-      <li>Selected city coordinates</li>
+      <li>City search text (sent to Open-Meteo's geocoding API to resolve city coordinates)</li>
+      <li>Selected city coordinates (sent to the self-hosted server to fetch the forecast)</li>
     </ul>
 
     <p>
@@ -153,9 +154,13 @@
     </p>
 
     <p>
-      Weather data is provided by
-      <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo.com</a>.
-      Open-Meteo may receive technical information such as IP addresses during requests.
+      Weather forecasts are served from a self-hosted server using data from
+      <a href="https://www.dwd.de/" target="_blank" rel="noopener noreferrer">DWD</a> and
+      <a href="https://www.ncei.noaa.gov/" target="_blank" rel="noopener noreferrer">NOAA</a>,
+      processed with the open-source
+      <a href="https://github.com/open-meteo/open-meteo" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+      software. City search uses Open-Meteo's public geocoding API. The self-hosted server may
+      receive technical information such as IP addresses during requests.
     </p>
 
     <h2>Permissions Used</h2>
@@ -164,6 +169,14 @@
       <li><strong>SET_WALLPAPER:</strong> used to set wallpapers when requested by the user</li>
       <li><strong>READ_EXTERNAL_STORAGE:</strong> used on Android 12 and below to select wallpaper images</li>
     </ul>
+
+    <h2>Ace Edition Purchase Verification</h2>
+    <p>
+      When purchasing or restoring Ace Edition, the app sends a cryptographic purchase receipt
+      (issued by Google Play) to a self-hosted server operated by the developer
+      (api.spadelauncher.com) to verify the purchase is genuine. No personal data is included —
+      only the signed receipt from Google. The server does not store this data after verification.
+    </p>
 
     <h2>Data Collection</h2>
     <p>
