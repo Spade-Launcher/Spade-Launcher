@@ -1268,22 +1268,22 @@ details[open] .faq-answer p {
         justify-content: center;
     }
     .trust-row { justify-content: center; }
-    .hero-phones-wrap { margin-top: -60px; }
-    .phones-fade { display: block; }
+    .hero-phones-wrap { display: none; }
 
-    .hphone-center { width: 180px; }
-    .hphone-mid  { display: none; }
-    .hphone-edge { display: none; }
-
-    .section { padding: 88px 0; }
+    .section { padding: 72px 0; }
 
     .bento-showcase {
         grid-template-columns: 1fr;
         min-height: auto;
     }
-    .showcase-text { padding: 32px 32px 0; }
-    .showcase-visual { padding: 28px 28px 0; min-height: 280px; }
-    .showcase-phone { width: 48%; }
+    .showcase-text { padding: 28px 28px 0; }
+    .showcase-visual {
+        padding: 16px 28px 0;
+        min-height: 0;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    .showcase-phone { width: 62%; }
 
     .bento { grid-template-columns: 1fr; }
 
