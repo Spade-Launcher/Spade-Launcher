@@ -618,6 +618,33 @@ h3 {
     gap: 10px;
 }
 
+/* Dot indicators — hidden on desktop, shown by mobile media query */
+.bento-dots {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+}
+.bento-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(240,239,233,0.22);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: width 220ms ease, border-radius 220ms ease, background 220ms ease;
+}
+.bento-dot.is-active {
+    width: 20px;
+    border-radius: 3px;
+    background: var(--ivory);
+}
+html.light .bento-dot          { background: rgba(10,9,8,0.15); }
+html.light .bento-dot.is-active { background: var(--ink); }
+
 .bento-card {
     border: 1px solid var(--seam);
     border-radius: var(--r);
@@ -1246,18 +1273,22 @@ details[open] .faq-answer p {
     h1 { font-size: clamp(30px, 10vw, 52px); }
     h2 { font-size: clamp(28px, 8.5vw, 52px); }
 
+    /* ── Hero: restore sticky + full-height for scroll fan animation ── */
+    .hero-scroll-stage { height: 140vh; }
+
     .hero {
-        position: relative;
-        top: 0;
+        position: sticky;
+        top: 76px;
+        height: calc(100vh - 76px);
         grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
         text-align: center;
-        height: auto;
-        min-height: 0;
-        overflow: hidden;
-        padding-top: 60px;
+        overflow: visible;
+        padding-top: 32px;
+        gap: 0;
     }
     .hero-text { padding: 0; }
-    .hero-sub { margin: 0 auto 32px; }
+    .hero-sub  { font-size: 15px; margin: 0 auto 28px; max-width: 300px; }
     .hero-actions {
         flex-direction: column;
         align-items: stretch;
@@ -1268,9 +1299,30 @@ details[open] .faq-answer p {
         justify-content: center;
     }
     .trust-row { justify-content: center; }
-    .hero-phones-wrap { display: none; }
+
+    /* Hero phones: show center only; mid start at 0 for JS animation */
+    .hero-phones-wrap { align-self: end; padding-bottom: 16px; }
+    .hphone-center    { width: 118px; }
+    .hphone-mid       { width: 0; min-width: 0; opacity: 0; }
+    .hphone-edge      { display: none; }
 
     .section { padding: 72px 0; }
+
+    /* ── Bento: horizontal swipe carousel ── */
+    .bento {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 12px;
+    }
+    .bento::-webkit-scrollbar { display: none; }
+    .bento > .bento-card {
+        flex: 0 0 88%;
+        scroll-snap-align: start;
+    }
+    .bento-dots { display: flex; }
 
     .bento-showcase {
         grid-template-columns: 1fr;
@@ -1284,8 +1336,6 @@ details[open] .faq-answer p {
         align-items: flex-start;
     }
     .showcase-phone { width: 62%; }
-
-    .bento { grid-template-columns: 1fr; }
 
     .ace-copy { padding: 44px 32px; }
     .ace-list { grid-template-columns: 1fr; }

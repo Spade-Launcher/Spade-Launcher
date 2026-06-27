@@ -150,6 +150,14 @@
                     </div>
                 </article>
             </div>
+
+            <!-- Dot indicators — visible on mobile only, driven by JS -->
+            <div class="bento-dots" aria-label="Feature cards" role="tablist">
+                <button class="bento-dot is-active" aria-label="Calm at a glance"></button>
+                <button class="bento-dot" aria-label="Private by design"></button>
+                <button class="bento-dot" aria-label="Fast app access"></button>
+                <button class="bento-dot" aria-label="Weather at a glance"></button>
+            </div>
         </section>
 
         <!-- ─── WHY SPADE ───────────────────────────────────── -->
@@ -368,10 +376,8 @@
         revealObserver.observe(el);
     });
 
-    /* ── Hero scroll animation (desktop only) ─────── */
+    /* ── Hero scroll animation (desktop + mobile) ─── */
     (function () {
-        if (window.matchMedia('(max-width: 768px)').matches) return;
-
         const stage       = document.querySelector('.hero-scroll-stage');
         const heroText    = document.querySelector('.hero-text');
         const phonesWrap  = document.querySelector('.hero-phones-wrap');
@@ -380,11 +386,8 @@
         const phoneEdges  = document.querySelectorAll('.hphone-edge');
         const NAV_H = 76;
 
-        // Measured once per entry into the sticky zone (or after resize).
-        // Side phones are absolutely positioned so they never disturb flex layout;
-        // centre phone stays at a fixed position inside phonesWrap → one stable
-        // baseCenterX → one stable shift → no drift, no per-frame jumps.
-        let baseCenterX  = 0; // viewport X of centre phone's midpoint (no transforms)
+        let isMobile    = window.innerWidth <= 768;
+        let baseCenterX = 0, baseCenterY = 0;
         let cpW = 0, cpH = 0, cpL = 0, cpT = 0, sideBot = 0;
         let needsMeasure = true;
 
@@ -392,11 +395,11 @@
             const wr = phonesWrap.getBoundingClientRect();
             const cr = centerPhone.getBoundingClientRect();
             baseCenterX = cr.left + cr.width  / 2;
+            baseCenterY = cr.top  + cr.height / 2;
             cpW = cr.width;
             cpH = cr.height;
-            cpL = cr.left - wr.left;   // centre phone's left within phonesWrap
-            cpT = cr.top  - wr.top;    // centre phone's top  within phonesWrap
-            // CSS `bottom` value that aligns a side phone's bottom with centre phone's bottom
+            cpL = cr.left - wr.left;
+            cpT = cr.top  - wr.top;
             sideBot = wr.height - (cpT + cpH);
         }
 
@@ -406,7 +409,6 @@
         function sub(t, a, b) {
             return Math.max(0, Math.min(1, (t - a) / (b - a)));
         }
-
         function resetEl(el) {
             el.style.position = el.style.left    = el.style.bottom  =
             el.style.width    = el.style.opacity = el.style.filter  =
@@ -416,6 +418,7 @@
         let rafId = null;
         function tick() {
             rafId = null;
+            isMobile = window.innerWidth <= 768;
             const r        = stage.getBoundingClientRect();
             const scrolled = NAV_H - r.top;
             const total    = r.height - (window.innerHeight - NAV_H);
@@ -432,59 +435,59 @@
 
             if (needsMeasure) { measure(); needsMeasure = false; }
 
-            const p = Math.min(1, scrolled / total);
+            const p       = Math.min(1, scrolled / total);
+            const isLight = document.documentElement.classList.contains('light');
 
-            // Phase 1 — text fades & slides left  (0 → 0.38)
+            // Phase 1 — text fades out
             const tp = ease(sub(p, 0, 0.38));
             heroText.style.opacity   = 1 - tp;
-            heroText.style.transform = `translateX(${-40 * tp}px)`;
+            heroText.style.transform = isMobile
+                ? `translateY(${-28 * tp}px)`
+                : `translateX(${-40 * tp}px)`;
 
-            // Phase 2 — phonesWrap slides so centre phone hits the viewport midline  (0.05 → 0.55)
-            // shift is constant per entry (baseCenterX never drifts because side phones
-            // are absolutely positioned and don't affect the centre phone's flex position).
-            const mp    = ease(sub(p, 0.05, 0.55));
-            const shift = window.innerWidth / 2 - baseCenterX;
-            phonesWrap.style.transform = `translateX(${shift * mp}px)`;
+            // Phase 2 — centre phone moves to viewport midpoint
+            const mp = ease(sub(p, 0.05, 0.55));
+            if (isMobile) {
+                const targetY = NAV_H + (window.innerHeight - NAV_H) / 2;
+                phonesWrap.style.transform = `translateY(${(targetY - baseCenterY) * mp}px)`;
+            } else {
+                phonesWrap.style.transform = `translateX(${(window.innerWidth / 2 - baseCenterX) * mp}px)`;
+            }
 
-            // Phase 3 — mid phones fan out  (0.35 → 0.88)
-            // left positions derived from centre phone edges + overlap (12 px each side).
-            // Formula: mid-L right = cpL + 12·m  →  mid-L left = cpL − 190·m
-            //          mid-R left  = cpL + cpW − 12·m
-            const midP    = ease(sub(p, 0.35, 0.88));
-            const isLight = document.documentElement.classList.contains('light');
-            // Depth effect: opacity fades the phone IN (0→1), brightness dims it WITHOUT
-            // making it transparent — so front phones are never see-through.
-            const midBright  = isLight ? 1 - 0.18 * midP  : 1 - 0.28 * midP;  // 0.82–1.0
-            const edgeBright = isLight ? 1 - 0.32 * 1     : 1 - 0.52 * 1;     // fixed at full edgeP
+            // Phase 3 — mid phones fan out
+            const midP      = ease(sub(p, 0.35, 0.88));
+            const midBright = isLight ? 1 - 0.18 * midP : 1 - 0.28 * midP;
             phoneMids.forEach((el, i) => {
                 el.style.position  = 'absolute';
-                el.style.width     = 202 * midP + 'px';
-                el.style.left      = (i === 0
-                    ? cpL - 190 * midP
-                    : cpL + cpW - 12 * midP) + 'px';
                 el.style.bottom    = sideBot + 'px';
                 el.style.opacity   = midP;
                 el.style.filter    = `brightness(${midBright})`;
-                el.style.transform = `translateY(${44 * midP}px)`;
+                if (isMobile) {
+                    el.style.width     = 95 * midP + 'px';
+                    el.style.left      = (i === 0 ? cpL - 88 * midP : cpL + cpW - 8 * midP) + 'px';
+                    el.style.transform = `translateY(${24 * midP}px)`;
+                } else {
+                    el.style.width     = 202 * midP + 'px';
+                    el.style.left      = (i === 0 ? cpL - 190 * midP : cpL + cpW - 12 * midP) + 'px';
+                    el.style.transform = `translateY(${44 * midP}px)`;
+                }
             });
 
-            // Phase 4 — edge phones fan out  (0.55 → 1.0)
-            // edge-L right = mid-L left + (6·e + 12·m) overlap
-            //              = (cpL − 190·m) + 6·e + 12·m = cpL − 178·m + 6·e
-            // edge-L left  = cpL − 178·m + 6·e − 163·e = cpL − 178·m − 157·e
-            // edge-R left  = cpL + cpW + 178·m − 6·e  (mirror)
-            const edgeP = ease(sub(p, 0.55, 1.0));
-            phoneEdges.forEach((el, i) => {
-                el.style.position  = 'absolute';
-                el.style.width     = 163 * edgeP + 'px';
-                el.style.left      = (i === 0
-                    ? cpL - 178 * midP - 157 * edgeP
-                    : cpL + cpW + 178 * midP - 6 * edgeP) + 'px';
-                el.style.bottom    = sideBot + 'px';
-                el.style.opacity   = edgeP;
-                el.style.filter    = `brightness(${isLight ? 0.68 : 0.48})`;
-                el.style.transform = `translateY(${82 * edgeP}px)`;
-            });
+            // Phase 4 — edge phones fan out (desktop only)
+            if (!isMobile) {
+                const edgeP = ease(sub(p, 0.55, 1.0));
+                phoneEdges.forEach((el, i) => {
+                    el.style.position  = 'absolute';
+                    el.style.width     = 163 * edgeP + 'px';
+                    el.style.left      = (i === 0
+                        ? cpL - 178 * midP - 157 * edgeP
+                        : cpL + cpW + 178 * midP - 6 * edgeP) + 'px';
+                    el.style.bottom    = sideBot + 'px';
+                    el.style.opacity   = edgeP;
+                    el.style.filter    = `brightness(${isLight ? 0.68 : 0.48})`;
+                    el.style.transform = `translateY(${82 * edgeP}px)`;
+                });
+            }
         }
 
         window.addEventListener('scroll', () => {
@@ -493,7 +496,34 @@
 
         window.addEventListener('resize', () => {
             needsMeasure = true;
+            isMobile = window.innerWidth <= 768;
             if (!rafId) rafId = requestAnimationFrame(tick);
+        });
+    })();
+
+    /* ── Bento carousel dots (mobile) ───────────── */
+    (function () {
+        const bento = document.querySelector('.bento');
+        const dots  = document.querySelectorAll('.bento-dot');
+        if (!bento || !dots.length) return;
+
+        function updateDots() {
+            const cards     = bento.querySelectorAll('.bento-card');
+            if (!cards.length) return;
+            const cardW     = cards[0].offsetWidth + 12; // card + gap
+            const activeIdx = Math.min(Math.round(bento.scrollLeft / cardW), dots.length - 1);
+            dots.forEach((d, i) => d.classList.toggle('is-active', i === activeIdx));
+        }
+
+        bento.addEventListener('scroll', updateDots, { passive: true });
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                const cards = bento.querySelectorAll('.bento-card');
+                if (!cards.length) return;
+                const cardW = cards[0].offsetWidth + 12;
+                bento.scrollTo({ left: i * cardW, behavior: 'smooth' });
+            });
         });
     })();
 
