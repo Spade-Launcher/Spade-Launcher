@@ -1243,8 +1243,8 @@ details[open] .faq-answer p {
     .btn-nav         { display: none; }
     .toggle-label    { display: none; }
 
-    h1 { font-size: clamp(52px, 15vw, 80px); }
-    h2 { font-size: clamp(36px, 10vw, 56px); }
+    h1 { font-size: clamp(30px, 10vw, 52px); }
+    h2 { font-size: clamp(28px, 8.5vw, 52px); }
 
     .hero {
         position: relative;
@@ -1258,28 +1258,22 @@ details[open] .faq-answer p {
     }
     .hero-text { padding: 0; }
     .hero-sub { margin: 0 auto 32px; }
-    .hero-actions { justify-content: center; }
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+    }
+    .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
     .trust-row { justify-content: center; }
-    .hero-phones-wrap { margin-top: -90px; }
+    .hero-phones-wrap { margin-top: -60px; }
     .phones-fade { display: block; }
 
-    .hphone-center { width: 160px; border-radius: 28px; }
-    .hphone-mid {
-        width: 128px;
-        min-width: 0;
-        border-radius: 24px;
-        margin: 0 -12px;
-        opacity: 0.82;
-        transform: translateY(44px);
-    }
-    .hphone-edge {
-        width: 100px;
-        min-width: 0;
-        border-radius: 20px;
-        margin: 0 -6px;
-        opacity: 0.50;
-        transform: translateY(82px);
-    }
+    .hphone-center { width: 180px; }
+    .hphone-mid  { display: none; }
+    .hphone-edge { display: none; }
 
     .section { padding: 88px 0; }
 
@@ -1324,23 +1318,10 @@ details[open] .faq-answer p {
 /* ── RESPONSIVE: 500px ──────────────────────────────────────── */
 
 @media (max-width: 500px) {
-    .hero-actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .hero-actions .btn {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .hphone-center { width: 128px; border-radius: 26px; }
-    .hphone-mid    { width: 104px; border-radius: 22px; margin: 0 -8px; }
-    .hphone-edge   { width: 82px;  border-radius: 18px; margin: 0 -6px; }
-
     .trust-row { margin-bottom: 52px; }
 
     .philosophy-section blockquote {
-        font-size: clamp(32px, 9.5vw, 52px);
+        font-size: clamp(28px, 9vw, 48px);
     }
 
     .final-cta { grid-template-columns: 1fr; }
