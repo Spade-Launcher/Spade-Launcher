@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -43,6 +43,7 @@
     <main id="top">
 
         <!-- ─── HERO ─────────────────────────────────────────── -->
+        <div class="hero-scroll-stage">
         <section class="hero">
             <div class="hero-text">
                 <p class="eyebrow">Minimal Android Launcher</p>
@@ -66,24 +67,30 @@
             <div class="hero-phones-wrap">
                 <div class="hero-phones" aria-label="Spade Launcher screenshots">
                     <div class="hphone hphone-edge">
-                        <img src="images/5OLEDFriendly.png" alt="OLED friendly theme">
+                        <span class="hphone-placeholder">Placeholder Text :P</span>
+                        <img src="images/screenshot-5.png" alt="OLED friendly theme" onerror="this.style.display='none'">
                     </div>
                     <div class="hphone hphone-mid">
-                        <img src="images/3InstantSearch.png" alt="Instant app search">
+                        <span class="hphone-placeholder">Placeholder Text :P</span>
+                        <img src="images/screenshot-3.png" alt="Instant app search" onerror="this.style.display='none'">
                     </div>
                     <div class="hphone hphone-center">
-                        <img src="images/1FirstScreen.png" alt="Spade Launcher home screen">
+                        <span class="hphone-placeholder">Placeholder Text :P</span>
+                        <img src="images/screenshot-1.png" alt="Spade Launcher home screen" onerror="this.style.display='none'">
                     </div>
                     <div class="hphone hphone-mid">
-                        <img src="images/4WeatherAtAGlance.png" alt="Weather at a glance">
+                        <span class="hphone-placeholder">Placeholder Text :P</span>
+                        <img src="images/screenshot-2.png" alt="Weather at a glance" onerror="this.style.display='none'">
                     </div>
                     <div class="hphone hphone-edge">
-                        <img src="images/2SecondScreen.png" alt="Ivory theme">
+                        <span class="hphone-placeholder">Placeholder Text :P</span>
+                        <img src="images/screenshot-4.png" alt="Ivory theme" onerror="this.style.display='none'">
                     </div>
                 </div>
                 <div class="phones-fade" aria-hidden="true"></div>
             </div>
         </section>
+        </div><!-- /.hero-scroll-stage -->
 
         <!-- ─── FEATURES ─────────────────────────────────────── -->
         <section class="section" id="features">
@@ -207,21 +214,21 @@
                     while keeping the same calm, minimal experience.
                 </p>
                 <ul class="ace-list">
-                    <li>
+                    <li data-ace-img="images/1FirstScreen.png">
                         <span class="ace-dot" aria-hidden="true">✦</span>
                         Premium clock styles &amp; fonts
                     </li>
-                    <li>
+                    <li data-ace-img="images/5OLEDFriendly.png">
                         <span class="ace-dot" aria-hidden="true">✦</span>
                         Exclusive themes
                     </li>
-                    <li>
+                    <li data-ace-img="images/4WeatherAtAGlance.png">
                         <span class="ace-dot" aria-hidden="true">✦</span>
                         Canvas layout editor &amp; home widgets
                     </li>
-                    <li>
+                    <li data-ace-img="images/3InstantSearch.png">
                         <span class="ace-dot" aria-hidden="true">✦</span>
-                        Icon pack support
+                        Custom icon pack support
                     </li>
                     <li>
                         <span class="ace-dot" aria-hidden="true">✦</span>
@@ -239,6 +246,7 @@
                     <span class="ace-card-rank">A</span>
                     <img src="./spade-logo.png" alt="" class="ace-card-suit-sm">
                 </div>
+                <img class="ace-preview-phone" src="" alt="" aria-hidden="true">
             </div>
         </section>
 
@@ -365,20 +373,134 @@
         revealObserver.observe(el);
     });
 
-    /* ── Hero phone parallax ───────────────────────── */
-    const phonesWrap = document.querySelector('.hero-phones-wrap');
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-        if (ticking) return;
-        requestAnimationFrame(() => {
-            if (phonesWrap) {
-                const y = Math.min(window.scrollY * 0.18, 90);
-                phonesWrap.style.transform = `translateY(${y}px)`;
+    /* ── Hero scroll animation (desktop only) ─────── */
+    (function () {
+        if (window.matchMedia('(max-width: 768px)').matches) return;
+
+        const stage       = document.querySelector('.hero-scroll-stage');
+        const heroText    = document.querySelector('.hero-text');
+        const phonesWrap  = document.querySelector('.hero-phones-wrap');
+        const centerPhone = document.querySelector('.hphone-center');
+        const phoneMids   = document.querySelectorAll('.hphone-mid');
+        const phoneEdges  = document.querySelectorAll('.hphone-edge');
+        const NAV_H = 76;
+
+        // Measured once per entry into the sticky zone (or after resize).
+        // Side phones are absolutely positioned so they never disturb flex layout;
+        // centre phone stays at a fixed position inside phonesWrap → one stable
+        // baseCenterX → one stable shift → no drift, no per-frame jumps.
+        let baseCenterX  = 0; // viewport X of centre phone's midpoint (no transforms)
+        let cpW = 0, cpH = 0, cpL = 0, cpT = 0, sideBot = 0;
+        let needsMeasure = true;
+
+        function measure() {
+            const wr = phonesWrap.getBoundingClientRect();
+            const cr = centerPhone.getBoundingClientRect();
+            baseCenterX = cr.left + cr.width  / 2;
+            cpW = cr.width;
+            cpH = cr.height;
+            cpL = cr.left - wr.left;   // centre phone's left within phonesWrap
+            cpT = cr.top  - wr.top;    // centre phone's top  within phonesWrap
+            // CSS `bottom` value that aligns a side phone's bottom with centre phone's bottom
+            sideBot = wr.height - (cpT + cpH);
+        }
+
+        function ease(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+        function sub(t, a, b) {
+            return Math.max(0, Math.min(1, (t - a) / (b - a)));
+        }
+
+        function resetEl(el) {
+            el.style.position = el.style.left    = el.style.bottom  =
+            el.style.width    = el.style.opacity = el.style.filter  =
+            el.style.marginLeft = el.style.marginRight = el.style.transform = '';
+        }
+
+        let rafId = null;
+        function tick() {
+            rafId = null;
+            const r        = stage.getBoundingClientRect();
+            const scrolled = NAV_H - r.top;
+            const total    = r.height - (window.innerHeight - NAV_H);
+
+            if (scrolled <= 0) {
+                needsMeasure = true;
+                heroText.style.opacity     = '';
+                heroText.style.transform   = '';
+                phonesWrap.style.transform = '';
+                phoneMids.forEach(resetEl);
+                phoneEdges.forEach(resetEl);
+                return;
             }
-            ticking = false;
+
+            if (needsMeasure) { measure(); needsMeasure = false; }
+
+            const p = Math.min(1, scrolled / total);
+
+            // Phase 1 — text fades & slides left  (0 → 0.38)
+            const tp = ease(sub(p, 0, 0.38));
+            heroText.style.opacity   = 1 - tp;
+            heroText.style.transform = `translateX(${-40 * tp}px)`;
+
+            // Phase 2 — phonesWrap slides so centre phone hits the viewport midline  (0.05 → 0.55)
+            // shift is constant per entry (baseCenterX never drifts because side phones
+            // are absolutely positioned and don't affect the centre phone's flex position).
+            const mp    = ease(sub(p, 0.05, 0.55));
+            const shift = window.innerWidth / 2 - baseCenterX;
+            phonesWrap.style.transform = `translateX(${shift * mp}px)`;
+
+            // Phase 3 — mid phones fan out  (0.35 → 0.88)
+            // left positions derived from centre phone edges + overlap (12 px each side).
+            // Formula: mid-L right = cpL + 12·m  →  mid-L left = cpL − 190·m
+            //          mid-R left  = cpL + cpW − 12·m
+            const midP    = ease(sub(p, 0.35, 0.88));
+            const isLight = document.documentElement.classList.contains('light');
+            // Depth effect: opacity fades the phone IN (0→1), brightness dims it WITHOUT
+            // making it transparent — so front phones are never see-through.
+            const midBright  = isLight ? 1 - 0.18 * midP  : 1 - 0.28 * midP;  // 0.82–1.0
+            const edgeBright = isLight ? 1 - 0.32 * 1     : 1 - 0.52 * 1;     // fixed at full edgeP
+            phoneMids.forEach((el, i) => {
+                el.style.position  = 'absolute';
+                el.style.width     = 202 * midP + 'px';
+                el.style.left      = (i === 0
+                    ? cpL - 190 * midP
+                    : cpL + cpW - 12 * midP) + 'px';
+                el.style.bottom    = sideBot + 'px';
+                el.style.opacity   = midP;
+                el.style.filter    = `brightness(${midBright})`;
+                el.style.transform = `translateY(${44 * midP}px)`;
+            });
+
+            // Phase 4 — edge phones fan out  (0.55 → 1.0)
+            // edge-L right = mid-L left + (6·e + 12·m) overlap
+            //              = (cpL − 190·m) + 6·e + 12·m = cpL − 178·m + 6·e
+            // edge-L left  = cpL − 178·m + 6·e − 163·e = cpL − 178·m − 157·e
+            // edge-R left  = cpL + cpW + 178·m − 6·e  (mirror)
+            const edgeP = ease(sub(p, 0.55, 1.0));
+            phoneEdges.forEach((el, i) => {
+                el.style.position  = 'absolute';
+                el.style.width     = 163 * edgeP + 'px';
+                el.style.left      = (i === 0
+                    ? cpL - 178 * midP - 157 * edgeP
+                    : cpL + cpW + 178 * midP - 6 * edgeP) + 'px';
+                el.style.bottom    = sideBot + 'px';
+                el.style.opacity   = edgeP;
+                el.style.filter    = `brightness(${isLight ? 0.68 : 0.48})`;
+                el.style.transform = `translateY(${82 * edgeP}px)`;
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!rafId) rafId = requestAnimationFrame(tick);
+        }, { passive: true });
+
+        window.addEventListener('resize', () => {
+            needsMeasure = true;
+            if (!rafId) rafId = requestAnimationFrame(tick);
         });
-        ticking = true;
-    }, { passive: true });
+    })();
 
     /* ── Theme toggle ──────────────────────────────── */
     const toggleBtn = document.getElementById('themeToggle');
@@ -437,6 +559,62 @@
             });
         });
     });
+    </script>
+
+    <script>
+    /* ── Ace Edition feature preview ─────────────────────────── */
+    (function () {
+        const items   = document.querySelectorAll('.ace-list li[data-ace-img]');
+        const panel   = document.querySelector('.ace-panel');
+        const preview = panel.querySelector('.ace-preview-phone');
+        let active    = null;
+
+        function showPeek(src) {
+            preview.src = src;
+            preview.classList.remove('is-active');
+            preview.classList.add('is-peek');
+            panel.classList.add('has-preview');
+        }
+
+        function showActive(src) {
+            preview.src = src;
+            preview.classList.remove('is-peek');
+            preview.classList.add('is-active');
+            panel.classList.add('has-preview');
+        }
+
+        function clearPreview() {
+            preview.classList.remove('is-peek', 'is-active');
+            panel.classList.remove('has-preview');
+        }
+
+        items.forEach(li => {
+            li.addEventListener('mouseenter', () => {
+                if (li !== active) showPeek(li.dataset.aceImg);
+            });
+
+            li.addEventListener('mouseleave', () => {
+                if (active) {
+                    showActive(active.dataset.aceImg);
+                } else {
+                    clearPreview();
+                }
+            });
+
+            li.addEventListener('click', () => {
+                if (active === li) {
+                    li.classList.remove('is-active');
+                    active = null;
+                    clearPreview();
+                } else {
+                    if (active) active.classList.remove('is-active');
+                    active = li;
+                    li.classList.add('is-active');
+                    showActive(li.dataset.aceImg);
+                }
+            });
+        });
+    })();
     </script>
 
 </body>
