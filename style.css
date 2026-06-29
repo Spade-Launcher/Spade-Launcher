@@ -661,6 +661,13 @@ h3 {
     margin-bottom: 52px;
 }
 
+/* Flip: description left, heading right */
+.diff-section .section-head {
+    grid-template-columns: 0.9fr 1.1fr;
+}
+.diff-section .section-head > div { order: 2; }
+.diff-section .section-head > p   { order: 1; }
+
 .section-desc {
     max-width: 480px;
     color: var(--slate-s);
