@@ -713,8 +713,12 @@ html.light .bento-dot.is-active { background: var(--ink); }
 
 .showcase-phone {
     width: 52%;
-    animation: float 5s ease-in-out 1.2s infinite;
+    animation: none;
     transform-origin: center bottom;
+    transition: transform 600ms ease;
+}
+.bento-showcase:hover .showcase-phone {
+    animation: float 5s ease-in-out 0s infinite;
 }
 
 /* ── Private card ── */
@@ -1327,7 +1331,8 @@ details[open] .faq-answer p {
         justify-content: center;
         align-items: flex-start;
     }
-    .showcase-phone { width: 62%; }
+    .showcase-phone { width: 62%; animation: none !important; transition: none; }
+    .bento-showcase:hover .showcase-phone { animation: none !important; }
 
     .ace-copy { padding: 44px 32px; }
     .ace-list { grid-template-columns: 1fr; }
