@@ -893,6 +893,20 @@ html.light .diff-dot.is-active { background: var(--ink); }
 
 .ace-eyebrow { color: var(--gold-lo); }
 
+.ace-tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: var(--gold);
+    color: var(--ink);
+    vertical-align: middle;
+    margin-left: 6px;
+    opacity: 0.85;
+}
+
 .ace-desc {
     max-width: 520px;
     color: var(--slate-s);

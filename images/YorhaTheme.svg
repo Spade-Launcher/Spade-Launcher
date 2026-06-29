@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="820" viewBox="0 0 380 820">
+  <!-- Phone shell -->
+  <rect x="6" y="6" width="368" height="808" rx="52" fill="#1A1712" stroke="#57544A" stroke-width="1.2"/>
+  <!-- Subtle sheen on left edge -->
+  <rect x="6" y="60" width="4" height="200" rx="2" fill="rgba(218,212,187,0.06)"/>
+  <!-- Side buttons -->
+  <rect x="2" y="180" width="4" height="56" rx="2" fill="#2a2720"/>
+  <rect x="374" y="210" width="4" height="80" rx="2" fill="#2a2720"/>
+
+  <!-- Screen background — parchment -->
+  <rect x="18" y="18" width="344" height="784" rx="42" fill="#E2DBC5"/>
+
+  <!-- ═══ TOP STATUS BAR ═══ -->
+  <text x="36" y="52" font-family="'Courier New',Courier,monospace" font-size="10" fill="#57544A" opacity="0.6" letter-spacing="1">00:00</text>
+  <text x="344" y="52" font-family="'Courier New',Courier,monospace" font-size="10" fill="#57544A" opacity="0.6" text-anchor="end" letter-spacing="1">100%</text>
+
+  <!-- Top rule -->
+  <line x1="36" y1="62" x2="344" y2="62" stroke="#979381" stroke-width="0.6" opacity="0.7"/>
+  <line x1="36" y1="64" x2="344" y2="64" stroke="#979381" stroke-width="0.3" opacity="0.35"/>
+
+  <!-- YoRHa label -->
+  <text x="36" y="90" font-family="'Courier New',Courier,monospace" font-size="8.5" fill="#979381" letter-spacing="6">Y O R H A</text>
+  <text x="320" y="90" font-family="'Courier New',Courier,monospace" font-size="8" fill="#CD664D" opacity="0.7" text-anchor="end" letter-spacing="2">UNIT 2B</text>
+
+  <!-- ═══ CLOCK ═══ -->
+  <text x="36" y="188" font-family="'Courier New',Courier,monospace" font-size="76" font-weight="200" fill="#57544A" letter-spacing="-4">00:00</text>
+
+  <!-- Date row -->
+  <text x="40" y="216" font-family="'Courier New',Courier,monospace" font-size="10.5" fill="#979381" letter-spacing="4">THU · 23 APR</text>
+
+  <!-- Weather / battery row -->
+  <text x="40" y="238" font-family="'Courier New',Courier,monospace" font-size="10" fill="#979381" letter-spacing="2">21°C  ·  21% CHG</text>
+
+  <!-- Divider (double rule NieR style) -->
+  <line x1="36" y1="254" x2="344" y2="254" stroke="#979381" stroke-width="0.6" opacity="0.6"/>
+  <line x1="36" y1="257" x2="344" y2="257" stroke="#979381" stroke-width="0.3" opacity="0.3"/>
+
+  <!-- ═══ SEARCH BAR ═══ -->
+  <rect x="36" y="272" width="308" height="30" rx="1.5" fill="none" stroke="#57544A" stroke-width="0.7" opacity="0.35"/>
+  <rect x="36" y="272" width="308" height="30" rx="1.5" fill="#57544A" opacity="0.04"/>
+  <text x="56" y="292" font-family="'Courier New',Courier,monospace" font-size="10" fill="#57544A" opacity="0.45" letter-spacing="3">SEARCH_</text>
+  <text x="318" y="292" font-family="'Courier New',Courier,monospace" font-size="10" fill="#979381" opacity="0.5" text-anchor="end" letter-spacing="1">GOOGLE</text>
+
+  <!-- Rule before apps -->
+  <line x1="36" y1="318" x2="344" y2="318" stroke="#979381" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- ═══ APP LIST ═══ -->
+  <g font-family="'Courier New',Courier,monospace" font-size="16" fill="#57544A" letter-spacing="0.5">
+    <text x="64" y="368">☎  Phone</text>
+    <text x="64" y="414">♪  Spotify</text>
+    <text x="64" y="460">✉  Gmail</text>
+    <text x="64" y="506">◎  Maps</text>
+  </g>
+
+  <!-- Subtle bracket decorations (NieR UI language) -->
+  <text x="36" y="368" font-family="'Courier New',Courier,monospace" font-size="12" fill="#979381" opacity="0.4">›</text>
+  <text x="36" y="414" font-family="'Courier New',Courier,monospace" font-size="12" fill="#979381" opacity="0.4">›</text>
+  <text x="36" y="460" font-family="'Courier New',Courier,monospace" font-size="12" fill="#979381" opacity="0.4">›</text>
+  <text x="36" y="506" font-family="'Courier New',Courier,monospace" font-size="12" fill="#979381" opacity="0.4">›</text>
+
+  <!-- Alert accent line (NieR orange) -->
+  <rect x="36" y="380" width="48" height="0.8" fill="#CD664D" opacity="0.25"/>
+  <rect x="36" y="426" width="48" height="0.8" fill="#CD664D" opacity="0.25"/>
+  <rect x="36" y="472" width="48" height="0.8" fill="#CD664D" opacity="0.25"/>
+  <rect x="36" y="518" width="48" height="0.8" fill="#CD664D" opacity="0.25"/>
+
+  <!-- ═══ BOTTOM DECORATION ═══ -->
+  <line x1="36" y1="762" x2="344" y2="762" stroke="#979381" stroke-width="0.5" opacity="0.5"/>
+  <line x1="36" y1="765" x2="344" y2="765" stroke="#979381" stroke-width="0.3" opacity="0.25"/>
+
+  <!-- Spade mark -->
+  <text x="344" y="756" font-family="Georgia,'Times New Roman',serif" font-size="18" fill="#57544A" opacity="0.2" text-anchor="end">♠</text>
+
+  <!-- System label (NieR always has these) -->
+  <text x="190" y="750" font-family="'Courier New',Courier,monospace" font-size="7.5" fill="#979381" opacity="0.4" text-anchor="middle" letter-spacing="4">YORHA INDUSTRIES</text>
+
+  <!-- Home bar -->
+  <rect x="148" y="786" width="84" height="4" rx="2" fill="#57544A" opacity="0.15"/>
+</svg>
