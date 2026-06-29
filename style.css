@@ -1425,7 +1425,6 @@ details[open] .faq-answer p {
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        touch-action: pan-x;
         gap: 12px;
     }
     .bento::-webkit-scrollbar { display: none; }
@@ -1443,7 +1442,6 @@ details[open] .faq-answer p {
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        touch-action: pan-x;
         gap: 12px;
         margin-top: 40px;
     }
