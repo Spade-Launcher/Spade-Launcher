@@ -704,6 +704,33 @@ h3 {
 html.light .bento-dot          { background: rgba(10,9,8,0.15); }
 html.light .bento-dot.is-active { background: var(--ink); }
 
+/* Diff section dots — hidden on desktop, shown on mobile */
+.diff-dots {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+}
+.diff-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(240,239,233,0.22);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: width 220ms ease, border-radius 220ms ease, background 220ms ease;
+}
+.diff-dot.is-active {
+    width: 20px;
+    border-radius: 3px;
+    background: var(--ivory);
+}
+html.light .diff-dot          { background: rgba(10,9,8,0.15); }
+html.light .diff-dot.is-active { background: var(--ink); }
+
 .bento-card {
     border: 1px solid var(--seam);
     border-radius: var(--r);
@@ -1360,7 +1387,33 @@ details[open] .faq-answer p {
         justify-content: center;
     }
     .trust-row        { justify-content: center; }
-    .hero-phones-wrap { display: none; }
+
+    /* ── Hero: static phone fan ── */
+    .hero { overflow: visible; padding-bottom: 16px; }
+    .hero-phones-wrap { display: block; margin-top: 20px; }
+    .hero-phones {
+        position: relative;
+        height: 228px;
+    }
+    .hphone-center {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 110px;
+        z-index: 3;
+    }
+    .hphone-mid {
+        position: absolute;
+        bottom: 0;
+        width: 85px;
+        opacity: 0.65;
+        filter: brightness(0.72);
+        z-index: 2;
+    }
+    .hero-phones .hphone:nth-child(2) { left: calc(50% - 125px); }
+    .hero-phones .hphone:nth-child(4) { left: calc(50% + 40px); }
+    .hphone-edge { display: none; }
 
     .section { padding: 72px 0; }
 
@@ -1368,9 +1421,11 @@ details[open] .faq-answer p {
     .bento {
         display: flex;
         overflow-x: auto;
+        overflow-y: hidden;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        touch-action: pan-x;
         gap: 12px;
     }
     .bento::-webkit-scrollbar { display: none; }
@@ -1379,6 +1434,25 @@ details[open] .faq-answer p {
         scroll-snap-align: start;
     }
     .bento-dots { display: flex; }
+
+    /* ── Diff section: horizontal swipe carousel ── */
+    .diff-grid {
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        touch-action: pan-x;
+        gap: 12px;
+        margin-top: 40px;
+    }
+    .diff-grid::-webkit-scrollbar { display: none; }
+    .diff-card {
+        flex: 0 0 88%;
+        scroll-snap-align: start;
+    }
+    .diff-dots { display: flex; }
 
     .bento-showcase {
         grid-template-columns: 1fr;

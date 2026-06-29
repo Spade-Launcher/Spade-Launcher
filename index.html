@@ -210,6 +210,12 @@
                     <p>No funding, no ads, no dark patterns. Just a launcher that does what it says.</p>
                 </article>
             </div>
+            <div class="diff-dots" aria-label="Comparison cards" role="tablist">
+                <button class="diff-dot is-active" aria-label="Collects nothing"></button>
+                <button class="diff-dot" aria-label="Less clutter"></button>
+                <button class="diff-dot" aria-label="Built to leave"></button>
+                <button class="diff-dot" aria-label="No agenda"></button>
+            </div>
         </section>
 
         <!-- ─── PHILOSOPHY ───────────────────────────────────── -->
@@ -519,6 +525,32 @@
                 if (!cards.length) return;
                 const cardW = cards[0].offsetWidth + 12;
                 bento.scrollTo({ left: i * cardW, behavior: 'smooth' });
+            });
+        });
+    })();
+
+    /* ── Diff carousel dots (mobile) ────────────────── */
+    (function () {
+        const grid = document.querySelector('.diff-grid');
+        const dots = document.querySelectorAll('.diff-dot');
+        if (!grid || !dots.length) return;
+
+        function updateDots() {
+            const cards = grid.querySelectorAll('.diff-card');
+            if (!cards.length) return;
+            const cardW = cards[0].offsetWidth + 12;
+            const activeIdx = Math.min(Math.round(grid.scrollLeft / cardW), dots.length - 1);
+            dots.forEach((d, i) => d.classList.toggle('is-active', i === activeIdx));
+        }
+
+        grid.addEventListener('scroll', updateDots, { passive: true });
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                const cards = grid.querySelectorAll('.diff-card');
+                if (!cards.length) return;
+                const cardW = cards[0].offsetWidth + 12;
+                grid.scrollTo({ left: i * cardW, behavior: 'smooth' });
             });
         });
     })();
