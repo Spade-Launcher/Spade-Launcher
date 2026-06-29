@@ -1248,26 +1248,21 @@ details[open] .faq-answer p {
     box-shadow: 0 20px 56px rgba(0, 0, 0, 0.45);
 }
 
-/* Card content order: headline → desc → rule → grey contrast text */
-.diff-card h3       { order: 1; font-size: 21px; font-weight: 700; letter-spacing: -0.035em; margin: 0 0 10px; }
+/* Card content order: headline → desc → grey contrast text (with border-top line) */
+.diff-card h3             { order: 1; font-size: 21px; font-weight: 700; letter-spacing: -0.035em; margin: 0 0 10px; }
 .diff-card > p:last-child { order: 2; color: rgba(240,239,233,0.55); font-size: 14px; line-height: 1.65; margin: 0 0 auto; }
 
-.diff-rule {
-    order: 3;
-    height: 1px;
-    background: var(--seam);
-    margin-top: 24px;
-    margin-bottom: 20px;
-    flex-shrink: 0;
-}
+/* Hide the separate rule div — line lives on .diff-other instead */
+.diff-rule { display: none; }
 
 .diff-other {
-    order: 4;
+    order: 3;
     color: rgba(240, 239, 233, 0.38);
     font-size: 13px;
     line-height: 1.65;
     margin: 0;
-    padding-bottom: 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--seam);
 }
 
 @media (max-width: 768px) {
