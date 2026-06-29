@@ -37,6 +37,16 @@
                 <span class="toggle-label">Light Mode</span>
             </button>
             <a class="btn btn-nav" href="#features">Get Started</a>
+            <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="nav-mobile-menu" id="navMobileMenu">
+            <a href="#features" class="nav-mobile-link">Features</a>
+            <a href="#ace" class="nav-mobile-link">Ace Edition</a>
+            <a href="#about" class="nav-mobile-link">About</a>
+            <a href="#faq" class="nav-mobile-link">FAQ</a>
+            <a href="#features" class="btn btn-primary nav-mobile-cta">Get Started</a>
         </div>
     </nav>
 
@@ -509,6 +519,27 @@
                 if (!cards.length) return;
                 const cardW = cards[0].offsetWidth + 12;
                 bento.scrollTo({ left: i * cardW, behavior: 'smooth' });
+            });
+        });
+    })();
+
+    /* ── Mobile nav hamburger ──────────────────────── */
+    (function () {
+        const btn  = document.getElementById('navHamburger');
+        const menu = document.getElementById('navMobileMenu');
+        if (!btn || !menu) return;
+
+        btn.addEventListener('click', () => {
+            const open = menu.classList.toggle('is-open');
+            btn.classList.toggle('is-open', open);
+            btn.setAttribute('aria-expanded', open);
+        });
+
+        menu.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                menu.classList.remove('is-open');
+                btn.classList.remove('is-open');
+                btn.setAttribute('aria-expanded', 'false');
             });
         });
     })();

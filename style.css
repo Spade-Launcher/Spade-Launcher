@@ -228,6 +228,65 @@ main, .site-footer {
     margin-left: auto;
 }
 
+/* Hamburger button — hidden on desktop */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+.nav-hamburger span {
+    display: block;
+    height: 2px;
+    background: var(--ivory);
+    border-radius: 2px;
+    transition: transform 200ms ease, opacity 200ms ease;
+}
+html.light .nav-hamburger span { background: var(--ink); }
+
+.nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.is-open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile dropdown menu — hidden by default */
+.nav-mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10,9,8,0.97);
+    border-bottom: 1px solid var(--seam);
+    flex-direction: column;
+    padding: 12px 18px 20px;
+    gap: 4px;
+    z-index: 99;
+}
+html.light .nav-mobile-menu {
+    background: rgba(245,244,238,0.97);
+}
+.nav-mobile-menu.is-open { display: flex; }
+.nav-mobile-link {
+    padding: 12px 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ivory);
+    border-bottom: 1px solid var(--seam);
+    text-decoration: none;
+}
+html.light .nav-mobile-link { color: var(--ink); }
+.nav-mobile-cta {
+    margin-top: 12px;
+    text-align: center;
+    justify-content: center;
+}
+
 html.light .diff-other {
     color: rgba(10, 9, 8, 0.38);
 }
@@ -1273,6 +1332,7 @@ details[open] .faq-answer p {
     .nav-links       { display: none; }
     .btn-nav         { display: none; }
     .toggle-label    { display: none; }
+    .nav-hamburger   { display: flex; }
 
     h1 { font-size: clamp(30px, 10vw, 52px); }
     h2 { font-size: clamp(28px, 8.5vw, 52px); }
@@ -1336,7 +1396,7 @@ details[open] .faq-answer p {
 
     .ace-copy { padding: 44px 32px; }
     .ace-list { grid-template-columns: 1fr; }
-    .ace-panel { padding: 36px 32px; }
+    .ace-panel { display: none; }
 
     .about-section {
         grid-template-columns: 1fr;
