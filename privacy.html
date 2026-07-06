@@ -110,7 +110,7 @@
     <a class="back-button" href="index.html">← Back</a>
 
     <h1>Privacy Policy</h1>
-    <p class="effective-date">Effective Date: 26.05.2026</p>
+    <p class="effective-date">Effective Date: 06.07.2026</p>
 
     <p>
       Spade Launcher is designed with a privacy-first approach. The app does not use analytics,
@@ -168,7 +168,31 @@
       <li><strong>INTERNET:</strong> used for weather data, city search, and Ace Edition purchase verification</li>
       <li><strong>SET_WALLPAPER:</strong> used to set wallpapers when requested by the user</li>
       <li><strong>READ_EXTERNAL_STORAGE:</strong> used on Android 12 and below to select wallpaper images</li>
+      <li><strong>SYSTEM_ALERT_WINDOW (display over other apps):</strong> used only by the optional
+        Focus Gate feature, to show a blocking screen once a self-set time limit on a chosen app
+        expires</li>
+      <li><strong>PACKAGE_USAGE_STATS (Usage Access):</strong> used only by the optional Focus Gate
+        feature, to detect which app is currently in the foreground so the blocking screen is shown
+        only for the app you've limited — not the rest of your device</li>
     </ul>
+
+    <h2>Focus Gate Feature</h2>
+    <p>
+      Focus Gate is an optional, user-enabled feature that lets you set a time limit on a chosen
+      app and shows a blocking screen once that time is up. To do this, it uses two permissions
+      you grant explicitly and separately in system settings: the ability to display over other
+      apps, and Usage Access, which lets it check which app is currently in the foreground.
+    </p>
+    <p>
+      This information is processed entirely on-device, in real time, only to decide whether to
+      show or hide the blocking screen. Spade Launcher does not store, log, transmit, or share
+      your app usage history — with the developer, with any third party, or with Spade Launcher
+      servers. Nothing about which apps you use or when is ever sent off your device.
+    </p>
+    <p>
+      Focus Gate is a self-restriction tool intended to help reduce app usage. It is best-effort
+      and is not a guaranteed or bypass-proof parental control or device management system.
+    </p>
 
     <h2>Ace Edition Purchase Verification</h2>
     <p>
