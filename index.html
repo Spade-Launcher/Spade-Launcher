@@ -3,17 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spade Launcher | Less Noise. More Presence.</title>
-    <meta name="description" content="Spade Launcher is a minimalist Android launcher designed for simplicity, privacy, and intentional phone use.">
+    <title>Spade Launcher: Minimalist Android Launcher for Focus &amp; Privacy</title>
+    <meta name="description" content="Spade Launcher is a free, minimalist Android launcher with no ads and no tracking. A calm home screen with weather, fast app search, widgets, and custom themes.">
+    <meta name="keywords" content="minimalist launcher, minimal Android launcher, Android home screen, distraction-free launcher, privacy launcher, digital minimalism, focus app, Spade Launcher">
+    <meta name="author" content="Nikitas Amvrosov">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://spadelauncher.com/">
     <meta name="theme-color" content="#0A0908">
     <link rel="icon" href="./spade-logo.png" type="image/png">
     <link rel="shortcut icon" href="./spade-logo.png" type="image/png">
     <link rel="apple-touch-icon" href="./spade-logo.png">
-    <meta property="og:title" content="Spade Launcher">
-    <meta property="og:description" content="Less Noise. More Presence. A minimalist Android launcher built for intentional phone use.">
-    <meta property="og:image" content="https://spadelauncher.com/spade-logo.png">
-    <meta property="og:url" content="https://spadelauncher.com">
+
+    <!-- Social sharing -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Spade Launcher">
+    <meta property="og:title" content="Spade Launcher: Minimalist Android Launcher">
+    <meta property="og:description" content="Less Noise. More Presence. A free, minimalist Android launcher with no ads, no account, and no tracking.">
+    <meta property="og:url" content="https://spadelauncher.com/">
+    <meta property="og:image" content="https://spadelauncher.com/spade-logo.png">
+    <meta property="og:image:alt" content="Spade Launcher logo">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Spade Launcher: Minimalist Android Launcher">
+    <meta name="twitter:description" content="A free, minimalist Android launcher with no ads, no account, and no tracking.">
+    <meta name="twitter:image" content="https://spadelauncher.com/spade-logo.png">
+
+    <!-- Structured data: helps Google understand the site is about an Android app -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://spadelauncher.com/#website",
+                "url": "https://spadelauncher.com/",
+                "name": "Spade Launcher",
+                "inLanguage": "en"
+            },
+            {
+                "@type": "MobileApplication",
+                "@id": "https://spadelauncher.com/#app",
+                "name": "Spade Launcher",
+                "url": "https://spadelauncher.com/",
+                "description": "A minimalist Android launcher designed for simplicity, privacy, and intentional phone use. No ads, no account, and no analytics.",
+                "operatingSystem": "Android 7.0 or later",
+                "applicationCategory": "UtilitiesApplication",
+                "applicationSubCategory": "Launcher",
+                "softwareVersion": "1.1",
+                "image": "https://spadelauncher.com/spade-logo.png",
+                "screenshot": [
+                    "https://spadelauncher.com/images/1FirstScreen.png",
+                    "https://spadelauncher.com/images/3InstantSearch.png",
+                    "https://spadelauncher.com/images/4WeatherAtAGlance.png"
+                ],
+                "installUrl": "https://play.google.com/store/apps/details?id=com.spadelabs.spadelauncher",
+                "downloadUrl": "https://play.google.com/store/apps/details?id=com.spadelabs.spadelauncher",
+                "sameAs": [
+                    "https://play.google.com/store/apps/details?id=com.spadelabs.spadelauncher"
+                ],
+                "featureList": [
+                    "Minimal home screen with clock, date, weather, and battery",
+                    "Instant app search and app drawer",
+                    "Edge alphabet zones for fast app browsing",
+                    "Hidden apps and favorites",
+                    "Weather without location permission",
+                    "Calendar and media player widgets",
+                    "Focus Gate app time limits",
+                    "Custom themes, clock styles, fonts, and icon packs (Ace Edition)",
+                    "Profile sharing with short codes",
+                    "No ads, no account, no analytics"
+                ],
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "EUR"
+                },
+                "author": {
+                    "@type": "Person",
+                    "name": "Nikitas Amvrosov"
+                }
+            }
+        ]
+    }
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,8 +98,10 @@
         <div class="nav-links">
             <a href="#features">Features</a>
             <a href="#ace">Ace Edition</a>
+            <a href="#news">What's New</a>
             <a href="#about">About</a>
             <a href="#faq">FAQ</a>
+            <a href="#reviews">Reviews</a>
         </div>
         <div class="nav-actions">
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
@@ -44,8 +118,10 @@
         <div class="nav-mobile-menu" id="navMobileMenu">
             <a href="#features" class="nav-mobile-link">Features</a>
             <a href="#ace" class="nav-mobile-link">Ace Edition</a>
+            <a href="#news" class="nav-mobile-link">What's New</a>
             <a href="#about" class="nav-mobile-link">About</a>
             <a href="#faq" class="nav-mobile-link">FAQ</a>
+            <a href="#reviews" class="nav-mobile-link">Reviews</a>
             <a href="#features" class="btn btn-primary nav-mobile-cta">Get Started</a>
         </div>
     </nav>
@@ -57,14 +133,14 @@
         <section class="hero">
             <div class="hero-text">
                 <p class="eyebrow">Minimal Android Launcher</p>
-                <h1>Less Noise.<br><em>More Presence.</em></h1>
+                <h1><span class="visually-hidden">Spade Launcher, a minimalist Android launcher: </span>Less Noise.<br><em>More Presence.</em></h1>
                 <p class="hero-sub">
                     Your attention has become a currency.<br><br>
                     Spade Launcher was designed to protect it, helping you save
                     time, reduce distractions, and use your phone with intention.
                 </p>
                 <div class="hero-actions">
-                    <a class="btn btn-primary" href="#features">Explore Spade Launcher</a>
+                    <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.spadelabs.spadelauncher" target="_blank" rel="noopener noreferrer">Download on Google Play</a>
                     <a class="btn btn-ghost" href="#ace">Ace Edition</a>
                 </div>
                 <div class="trust-row" aria-label="Privacy commitments">
@@ -77,19 +153,19 @@
             <div class="hero-phones-wrap">
                 <div class="hero-phones" aria-label="Spade Launcher screenshots">
                     <div class="hphone hphone-edge">
-                        <img src="images/screenshot-5.png" alt="OLED friendly theme" onerror="this.style.display='none'">
+                        <img src="images/screenshot-5.png" alt="Spade Launcher OLED black theme on Android" onerror="this.style.display='none'">
                     </div>
                     <div class="hphone hphone-mid">
-                        <img src="images/screenshot-3.png" alt="Instant app search" onerror="this.style.display='none'">
+                        <img src="images/screenshot-3.png" alt="Spade Launcher instant app search" onerror="this.style.display='none'">
                     </div>
                     <div class="hphone hphone-center">
-                        <img src="images/screenshot-1.png" alt="Spade Launcher home screen" onerror="this.style.display='none'">
+                        <img src="images/screenshot-1.png" alt="Spade Launcher minimalist Android home screen" onerror="this.style.display='none'">
                     </div>
                     <div class="hphone hphone-mid">
-                        <img src="images/screenshot-2.png" alt="Weather at a glance" onerror="this.style.display='none'">
+                        <img src="images/screenshot-2.png" alt="Spade Launcher weather forecast on the home screen" onerror="this.style.display='none'">
                     </div>
                     <div class="hphone hphone-edge">
-                        <img src="images/screenshot-4.png" alt="Ivory theme" onerror="this.style.display='none'">
+                        <img src="images/screenshot-4.png" alt="Spade Launcher light ivory theme" onerror="this.style.display='none'">
                     </div>
                 </div>
                 <div class="phones-fade" aria-hidden="true"></div>
@@ -130,7 +206,7 @@
 
                 <article class="bento-card bento-feature" data-reveal data-delay="80">
                     <div class="bento-visual">
-                        <img src="images/3InstantSearch.png" alt="Instant app search">
+                        <img src="images/3InstantSearch.png" alt="Searching apps instantly in the Spade Launcher app drawer">
                     </div>
                     <div class="bento-foot">
                         <h3>Fast app access</h3>
@@ -140,7 +216,7 @@
 
                 <article class="bento-card bento-feature" data-reveal data-delay="160">
                     <div class="bento-visual">
-                        <img src="images/4WeatherAtAGlance.png" alt="Weather widget">
+                        <img src="images/4WeatherAtAGlance.png" alt="Spade Launcher weather widget with hourly forecast">
                     </div>
                     <div class="bento-foot">
                         <h3>Weather at a glance</h3>
@@ -269,6 +345,108 @@
             </div>
         </section>
 
+        <!-- ─── WHAT'S NEW ───────────────────────────────────── -->
+        <section class="section news-section" id="news">
+            <div class="section-head" data-reveal>
+                <div>
+                    <p class="eyebrow">What's New</p>
+                    <h2>Version 1.1<br><span class="news-h2-indent">is here.</span></h2>
+                </div>
+                <p class="section-desc">
+                    Custom themes, shareable setups, and a calmer long-press menu.
+                    Here's what changed in recent updates.
+                </p>
+            </div>
+
+            <figure class="news-banner" data-reveal style="--pos: 50%">
+                <img
+                    class="news-banner-mono"
+                    src="images/whats-new-1-1.jpg"
+                    alt="Spade Launcher 1.1 in a pink custom theme: weather, custom theme editor, home screen, profile sharing, and settings"
+                    width="2400" height="1041"
+                    loading="lazy"
+                    draggable="false"
+                >
+                <img
+                    class="news-banner-color"
+                    src="images/whats-new-1-1.jpg"
+                    alt=""
+                    aria-hidden="true"
+                    width="2400" height="1041"
+                    loading="lazy"
+                    draggable="false"
+                >
+                <div
+                    class="news-banner-handle"
+                    role="slider"
+                    tabindex="0"
+                    aria-label="Reveal color"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="50"
+                ><span aria-hidden="true">&#8249; &#8250;</span></div>
+            </figure>
+
+            <div class="news-list" data-reveal data-delay="100">
+                <details open>
+                    <summary>
+                        <span class="news-title">
+                            <span class="news-version">1.1</span>
+                            <span>Custom themes &amp; profile sharing</span>
+                        </span>
+                        <span class="news-meta">
+                            <time datetime="2026-10-24">Oct 2026</time>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </span>
+                    </summary>
+                    <div class="faq-answer">
+                        <ul>
+                            <li><strong>Custom themes</strong> <span class="news-tag">Ace</span>: pick your own colors and save them.</li>
+                            <li><strong>Profile sharing</strong>: move your whole setup to another phone with a short code.</li>
+                            <li>A cleaner long-press menu, now with <strong>Remove App</strong>.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>
+                        <span class="news-title">
+                            <span class="news-version">1.0.4</span>
+                            <span>Focus Gate fix</span>
+                        </span>
+                        <span class="news-meta">
+                            <time datetime="2026-07-16">Jul 2026</time>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </span>
+                    </summary>
+                    <div class="faq-answer">
+                        <ul>
+                            <li>Fixed a bug with Focus Gate.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>
+                        <span class="news-title">
+                            <span class="news-version">1.0.3</span>
+                            <span>Theme pairs &amp; Timeline clock</span>
+                        </span>
+                        <span class="news-meta">
+                            <time datetime="2026-07-16">Jul 2026</time>
+                            <span class="faq-icon" aria-hidden="true">+</span>
+                        </span>
+                    </summary>
+                    <div class="faq-answer">
+                        <ul>
+                            <li><strong>New dark themes</strong> <span class="news-tag">Ace</span>: Cherry Noir and Night Club. Tap a theme again to switch light and dark.</li>
+                            <li>The Timeline clock now shows live progress through the day.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+
         <!-- ─── ABOUT ─────────────────────────────────────────── -->
         <section class="section about-section" id="about" data-reveal>
             <div class="about-head">
@@ -298,6 +476,46 @@
             </div>
 
             <div class="faq-list" data-reveal data-delay="100">
+                <details>
+                    <summary>
+                        <span>What is Spade Launcher?</span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Spade Launcher is a minimalist home screen launcher for Android. It replaces your phone's cluttered home screen with a calm one: clock, weather, your favorite apps, and fast search. It helps you use your phone with intention instead of getting pulled in.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>
+                        <span>Is Spade Launcher free?</span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Yes. Spade Launcher is free on Google Play with no ads. Ace Edition is an optional one-time purchase that unlocks extra customization. It's not a subscription.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>
+                        <span>Which phones does Spade Launcher work on?</span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Any Android phone running Android 7.0 or newer, including Samsung, Google Pixel, Xiaomi, OnePlus, and Motorola. The app is available in 19 languages.</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>
+                        <span>Can Spade Launcher help me reduce screen time?</span>
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>That's what it's built for. There are no notification badges or feeds on the home screen, you can hide distracting apps from the app drawer, and Focus Gate lets you set a time limit on a chosen app and blocks it once the time is up.</p>
+                    </div>
+                </details>
+
                 <details>
                     <summary>
                         <span>Does Spade Launcher collect my data?</span>
@@ -350,6 +568,51 @@
             </div>
         </section>
 
+        <!-- ─── REVIEWS (excerpts from Google Play) ──────────── -->
+        <section class="section reviews-section" id="reviews">
+            <div class="section-head" data-reveal>
+                <div>
+                    <p class="eyebrow">From Google Play</p>
+                    <h2>What people<br>are saying.</h2>
+                </div>
+                <p class="section-desc">
+                    Real reviews from people who switched to Spade Launcher.
+                </p>
+            </div>
+
+            <div class="reviews-grid">
+                <figure class="review-card" data-reveal>
+                    <span class="review-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span>
+                    <blockquote>“In an age where most software is bloated and everything wants to sell you something, I think Spade Launcher really is a breath of fresh air.”</blockquote>
+                    <figcaption><span class="review-suit" aria-hidden="true">♥</span> Ace of Hearts <span>· switched from Olauncher</span></figcaption>
+                </figure>
+
+                <figure class="review-card" data-reveal data-delay="80">
+                    <span class="review-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span>
+                    <blockquote>“The interface is very clean, runs smoothly, and doesn't distract … A big plus is the lack of ads and its privacy-focused approach.”</blockquote>
+                    <figcaption><span class="review-suit" aria-hidden="true">♦</span> Ace of Diamonds <span>· translated from Polish</span></figcaption>
+                </figure>
+
+                <figure class="review-card" data-reveal data-delay="160">
+                    <span class="review-stars" role="img" aria-label="4 out of 5 stars">★★★★<span class="review-star-off">★</span></span>
+                    <blockquote>“I finally decided to give a minimalistic launcher a shot and I have to say I am extremely happy … It's probably one of the best free choices out there.”</blockquote>
+                    <figcaption><span class="review-suit" aria-hidden="true">♣</span> Ace of Clubs</figcaption>
+                </figure>
+
+                <figure class="review-card" data-reveal data-delay="240">
+                    <span class="review-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span>
+                    <blockquote>“Really helped me improve my life. Strongly recommend.”</blockquote>
+                    <figcaption><span class="review-suit" aria-hidden="true">♠</span> Ace of Spades</figcaption>
+                </figure>
+            </div>
+
+            <p class="reviews-note" data-reveal>
+                A selection of excerpts from Google Play reviews. Only people who have installed the app
+                can review it there. Names have been swapped for playing cards for privacy reasons.
+                It's kind of our thing ;)
+            </p>
+        </section>
+
         <!-- ─── FINAL CTA ─────────────────────────────────────── -->
         <div class="final-cta" data-reveal>
             <img src="./spade-logo.png" alt="Spade Launcher logo" class="cta-logo">
@@ -357,7 +620,9 @@
                 <p class="eyebrow">Spade Launcher</p>
                 <h2>Make your phone feel quieter.</h2>
             </div>
-            <a class="btn btn-primary" href="#top">Back to top</a>
+            <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.spadelabs.spadelauncher" target="_blank" rel="noopener noreferrer">
+                <img src="images/google-play-badge.svg" alt="Get it on Google Play" width="239" height="71">
+            </a>
         </div>
 
     </main>
@@ -679,6 +944,50 @@
                     showActive(li.dataset.aceImg);
                 }
             });
+        });
+    })();
+    /* ── What's New banner: drag to reveal color ─────────────── */
+    (function () {
+        const banner = document.querySelector('.news-banner');
+        const handle = banner.querySelector('.news-banner-handle');
+        let dragging = false;
+
+        function setPos(pct) {
+            pct = Math.min(100, Math.max(0, pct));
+            banner.style.setProperty('--pos', pct + '%');
+            handle.setAttribute('aria-valuenow', Math.round(pct));
+        }
+
+        function posFromEvent(e) {
+            const rect = banner.getBoundingClientRect();
+            return (e.clientX - rect.left) / rect.width * 100;
+        }
+
+        banner.addEventListener('pointerdown', e => {
+            dragging = true;
+            banner.classList.add('is-dragging');
+            banner.setPointerCapture(e.pointerId);
+            setPos(posFromEvent(e));
+        });
+        banner.addEventListener('pointermove', e => {
+            if (dragging) setPos(posFromEvent(e));
+        });
+        ['pointerup', 'pointercancel'].forEach(type =>
+            banner.addEventListener(type, () => {
+                dragging = false;
+                banner.classList.remove('is-dragging');
+            })
+        );
+
+        handle.addEventListener('keydown', e => {
+            const now = Number(handle.getAttribute('aria-valuenow'));
+            const step = e.shiftKey ? 25 : 5;
+            if (e.key === 'ArrowLeft')  setPos(now - step);
+            else if (e.key === 'ArrowRight') setPos(now + step);
+            else if (e.key === 'Home') setPos(0);
+            else if (e.key === 'End')  setPos(100);
+            else return;
+            e.preventDefault();
         });
     })();
     </script>

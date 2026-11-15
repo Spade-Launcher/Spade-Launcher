@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy | Spade Launcher</title>
+  <meta name="description" content="Spade Launcher's privacy policy: no ads, no analytics, no account. What stays on your device, what the weather and purchase servers receive, and which permissions are used and why.">
+  <link rel="canonical" href="https://spadelauncher.com/privacy.html">
 
   <link rel="icon" href="spade-logo.png" type="image/png">
 
@@ -110,7 +112,7 @@
     <a class="back-button" href="index.html">← Back</a>
 
     <h1>Privacy Policy</h1>
-    <p class="effective-date">Effective Date: 06.07.2026</p>
+    <p class="effective-date">Effective Date: 15.11.2026</p>
 
     <p>
       Spade Launcher is designed with a privacy-first approach. The app does not use analytics,
@@ -167,7 +169,15 @@
     <ul>
       <li><strong>INTERNET:</strong> used for weather data, city search, and Ace Edition purchase verification</li>
       <li><strong>SET_WALLPAPER:</strong> used to set wallpapers when requested by the user</li>
-      <li><strong>READ_EXTERNAL_STORAGE:</strong> used on Android 12 and below to select wallpaper images</li>
+      <li><strong>READ_CALENDAR:</strong> used only by the optional calendar widget, to show your
+        upcoming events on the home screen</li>
+      <li><strong>Notification access (notification listener):</strong> used only by the optional
+        media player widget, to find and control the media that is currently playing</li>
+      <li><strong>REQUEST_DELETE_PACKAGES:</strong> used for the Remove App action, which opens
+        Android's own uninstall confirmation for an app you choose</li>
+      <li><strong>FOREGROUND_SERVICE and POST_NOTIFICATIONS:</strong> used only by the optional Focus
+        Gate feature, to keep its timer running and show its status notification</li>
+      <li><strong>BILLING:</strong> used to purchase or restore Ace Edition through Google Play</li>
       <li><strong>SYSTEM_ALERT_WINDOW (display over other apps):</strong> used only by the optional
         Focus Gate feature, to show a blocking screen once a self-set time limit on a chosen app
         expires</li>
@@ -175,6 +185,46 @@
         feature, to detect which app is currently in the foreground so the blocking screen is shown
         only for the app you've limited — not the rest of your device</li>
     </ul>
+
+    <p>
+      Wallpaper images are chosen through Android's system file picker, which gives Spade Launcher
+      access only to the image you select. No storage permission is needed for this.
+    </p>
+
+    <h2>Calendar Widget</h2>
+    <p>
+      If you add the optional calendar widget and grant calendar access, Spade Launcher reads the
+      title, time, location, and all-day status of your upcoming events to display them on the
+      home screen. Calendar data is read on-device only when the widget needs it. It is not stored
+      by Spade Launcher, and it is never sent to the developer, Spade Launcher servers, or any
+      third party. You can revoke calendar access at any time in Android Settings.
+    </p>
+
+    <h2>Media Player Widget</h2>
+    <p>
+      Android only allows apps with notification access to see which media is playing. The
+      optional media player widget uses this access solely to show and control the current media
+      session (title, artist, artwork, and playback controls). Spade Launcher does not read,
+      store, or transmit the content of your notifications, and media information stays on your
+      device. You can revoke notification access at any time in Android Settings.
+    </p>
+
+    <h2>Remove App</h2>
+    <p>
+      The Remove App action in the long-press menu opens Android's standard uninstall
+      confirmation for the app you chose. Nothing is uninstalled without your confirmation in that
+      system dialog, and no information about the action is collected or transmitted.
+    </p>
+
+    <h2>Profile and Theme Sharing</h2>
+    <p>
+      You can export your launcher setup or a custom theme as a share code. A setup code contains
+      your Spade Launcher settings, theme colors, layout, and the package names of your favorite
+      apps, so anyone you give it to can see which apps you have as favorites. A theme code
+      contains only colors. Codes are created on your device and are shared only when you copy
+      them or send them yourself through Android's share sheet. Share codes are not uploaded to
+      Spade Launcher servers.
+    </p>
 
     <h2>Focus Gate Feature</h2>
     <p>
